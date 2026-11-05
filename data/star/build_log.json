@@ -1,0 +1,26 @@
+{
+  "built_at_utc": "2026-11-05T13:38:37+00:00",
+  "rows": {
+    "fact_videos": 17663,
+    "dim_channel": 28,
+    "dim_date": 633,
+    "dim_province": 40,
+    "dim_issue": 7,
+    "fact_video_issue": 5882
+  },
+  "checks": {
+    "video_id unik": true,
+    "channel_id unik di dim_channel": true,
+    "province unik di dim_province": true,
+    "date unik di dim_date": true,
+    "semua channel_id fact ada di dim_channel": true,
+    "semua province fact ada di dim_province": true,
+    "semua date fact ada di dim_date": true,
+    "semua durasi terbaca": true,
+    "issue unik di dim_issue": true,
+    "semua issue fact ada di dim_issue": true,
+    "pasangan video x isu unik": true,
+    "semua label video cocok dengan fact_videos": true
+  },
+  "all_pass": true
+}

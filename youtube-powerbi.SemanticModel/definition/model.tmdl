@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-ID
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["fact_videos","dim_channel","dim_date","dim_province","_Measures","DataFolder","dim_issue","fact_video_issue"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fact_videos
+ref table dim_province
+ref table dim_date
+ref table dim_channel
+ref table _Measures
+ref table dim_issue
+ref table fact_video_issue
+
+ref cultureInfo en-US
+

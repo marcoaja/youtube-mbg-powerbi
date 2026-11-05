@@ -1,0 +1,7 @@
+pandas
+requests
+python-dotenv
+numpy
+matplotlib
+wordcloud
+ipython

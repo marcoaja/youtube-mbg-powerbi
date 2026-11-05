@@ -1,0 +1,20 @@
+# Lingkungan Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Rahasia (API key YouTube)
+.env
+
+# Data mentah dan data sumber (berisi data lengkap hasil API; tidak dipublikasikan)
+data/raw/
+data/source/
+
+# Power BI: cache data lokal dan pengaturan per-komputer (bisa dibuat ulang dengan Refresh)
+*.Report/.pbi/localSettings.json
+*.SemanticModel/.pbi/localSettings.json
+*.SemanticModel/.pbi/cache.abf
+*.pbix.bak
+# File .pbix biner dibagikan lewat GitHub Releases, bukan disimpan di repo
+*.pbix

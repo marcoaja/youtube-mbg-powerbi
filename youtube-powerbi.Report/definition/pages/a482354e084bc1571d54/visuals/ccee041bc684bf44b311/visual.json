@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "ccee041bc684bf44b311",
+  "position": {
+    "x": 16,
+    "y": 16,
+    "z": 0,
+    "height": 80,
+    "width": 600,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Channel & Wilayah",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Siapa yang memberitakan MBG, dan wilayah mana yang paling disorot",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#6B7280"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

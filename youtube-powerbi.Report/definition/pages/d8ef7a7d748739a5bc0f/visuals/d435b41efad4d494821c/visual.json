@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "d435b41efad4d494821c",
+  "position": {
+    "x": 856,
+    "y": 250,
+    "z": 13000,
+    "height": 400,
+    "width": 408,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Catatan & batasan",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Lokasi:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " 8.529 video (48%) tidak menyebut provinsi dan 723 menyebut lebih dari satu; keduanya dikecualikan dari visual wilayah.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Isu:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " label berasal dari pelabelan teks video; satu video bisa punya beberapa isu, jadi jumlah per isu tidak dijumlahkan.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Periode:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " data mulai 6 Jan 2025, sehingga Januari 2025 tidak penuh satu bulan.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Sampel kecil:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " channel pemerintah hanya 129 veo",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

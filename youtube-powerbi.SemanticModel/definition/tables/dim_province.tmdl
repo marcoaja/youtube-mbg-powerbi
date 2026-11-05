@@ -1,0 +1,35 @@
+table dim_province
+	lineageTag: fbcad1b9-2508-449b-83d4-9172b27118f4
+
+	column province
+		dataType: string
+		lineageTag: 9df8337c-8f0d-449a-905d-d067e57fb717
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	column island_group
+		dataType: string
+		lineageTag: 34b29bd4-829a-4a71-b942-eea49b41421a
+		summarizeBy: none
+		sourceColumn: island_group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_province = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_province.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"province", type text}, {"island_group", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

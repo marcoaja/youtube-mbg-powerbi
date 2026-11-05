@@ -1,0 +1,28 @@
+relationship cf49567a-5c59-9218-ea6f-2fe5ad575058
+	fromColumn: fact_videos.channel_id
+	toColumn: dim_channel.channel_id
+
+relationship 343326bf-8160-e67d-b6ec-ac3c6e50e2c2
+	fromColumn: fact_videos.date
+	toColumn: dim_date.date
+
+relationship ba110597-2cc8-a61c-ae3a-6817721f0c7f
+	fromColumn: fact_videos.province
+	toColumn: dim_province.province
+
+relationship f2afe033-2815-253b-c3de-7257212b318c
+	fromColumn: fact_video_issue.issue
+	toColumn: dim_issue.issue
+
+relationship 3827caee-c4ca-502c-2864-f2cfb8a1475e
+	fromColumn: fact_video_issue.channel_id
+	toColumn: dim_channel.channel_id
+
+relationship 129e047d-7f96-41b5-75c1-e40e609e61b5
+	fromColumn: fact_video_issue.province
+	toColumn: dim_province.province
+
+relationship e91a8cbe-a888-6cfb-fc73-29f0ff251209
+	fromColumn: fact_video_issue.date
+	toColumn: dim_date.date
+

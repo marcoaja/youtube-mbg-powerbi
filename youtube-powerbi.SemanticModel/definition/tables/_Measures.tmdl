@@ -1,0 +1,78 @@
+table _Measures
+	lineageTag: e35ca31b-aac4-4c47-b0ca-73a7776a0f73
+
+	measure 'Total Videos' = COUNTROWS(fact_videos)
+		formatString: #,0
+		displayFolder: KPI
+		lineageTag: fb36c2c5-9ef6-4d3e-b4c8-68564503c855
+
+	measure 'Total Views' = SUM(fact_videos[view_count])
+		formatString: #,0
+		displayFolder: KPI
+		lineageTag: 2aa8c7ba-343a-4867-9c13-24eeee80a3df
+
+	measure 'Total Likes' = SUM(fact_videos[like_count])
+		formatString: #,0
+		displayFolder: KPI
+		lineageTag: 9e47d790-f497-42e6-98ab-6a9e768620a7
+
+	measure 'Total Comments' = SUM(fact_videos[comment_count])
+		formatString: #,0
+		displayFolder: KPI
+		lineageTag: d59fa492-0b6b-4ac0-a4c2-e3c15cec4208
+
+	measure 'Avg Views per Video' = DIVIDE([Total Views],[Total Videos])
+		formatString: #,0
+		displayFolder: KPI
+		lineageTag: 6e92e813-8933-47c8-b0f2-2b90d092c273
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Engagement Rate' = DIVIDE([Total Likes] + [Total Comments], [Total Views])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Rasio
+		lineageTag: 570552da-1394-467c-a73a-408bb43298d9
+
+	measure 'Videos Prev Month' = CALCULATE([Total Videos], DATEADD(dim_date[date], -1, MONTH))
+		formatString: #,0
+		displayFolder: Waktu
+		lineageTag: b04ada3e-d509-476d-bcda-749ca800d399
+
+	measure 'Videos MoM %' = DIVIDE([Total Videos] - [Videos Prev Month], [Videos Prev Month])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Waktu
+		lineageTag: c4a1a6d4-72ae-43c3-9ef6-bef467c2c485
+
+	measure 'Share of Views %' = DIVIDE([Total Views], CALCULATE([Total Views], ALL(dim_channel)))
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Rasio
+		lineageTag: a4cc4202-a63f-4bbe-b726-99bc2c4fc84e
+
+	measure 'Periode Data' =
+			"Data: " & FORMAT ( MIN ( fact_videos[date] ), "d mmm yyyy" )
+			    & " – " & FORMAT ( MAX ( fact_videos[date] ), "d mmm yyyy" )
+		displayFolder: Teks
+		lineageTag: c77aa288-20a6-41a1-b6ac-4125eb880fb9
+
+	measure 'Video Isu' = DISTINCTCOUNT ( fact_video_issue[video_id] )
+		formatString: #,0
+		displayFolder: KPI
+		lineageTag: 8e90080e-1c29-4ad9-83af-4b43fca5fc89
+
+	measure '% Video Isu' = DIVIDE ( [Video Isu], [Total Videos] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: KPI
+		lineageTag: 99e21728-b693-4cdc-bb0e-17e98d2f2ee5
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,145 @@
+table fact_videos
+	lineageTag: e646bab4-7f50-491f-881a-0937eaf2b7ef
+
+	column video_id
+		dataType: string
+		lineageTag: 7e282329-a674-477a-971d-5a85b1f9d6fd
+		summarizeBy: none
+		sourceColumn: video_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_id
+		dataType: string
+		isHidden
+		lineageTag: 604b37c8-9cdb-4d92-b627-7a22aa694bff
+		summarizeBy: none
+		sourceColumn: channel_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: b0e83043-5ce1-425b-b39e-e101d3465e0b
+		summarizeBy: none
+		sourceColumn: date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column province
+		dataType: string
+		isHidden
+		lineageTag: ee40202a-9be8-43a2-949f-5def534543fe
+		summarizeBy: none
+		sourceColumn: province
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: 47451f6d-3a26-4606-aa68-ce3c9f12ea8e
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 98d6429d-a5e4-43aa-8bbb-67360a1313ec
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column view_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 15666ce6-8553-46fd-a2d4-2c5fbf66b556
+		summarizeBy: sum
+		sourceColumn: view_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column like_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 711319bf-d43a-4aef-a217-4880df11120b
+		summarizeBy: sum
+		sourceColumn: like_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column comment_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 9921403c-0389-4aa2-a3f8-dd17c5b86425
+		summarizeBy: sum
+		sourceColumn: comment_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_sec
+		dataType: int64
+		formatString: 0
+		lineageTag: 270cb201-d77c-4c4d-a6ac-ffb20df955f4
+		summarizeBy: sum
+		sourceColumn: duration_sec
+
+		annotation SummarizationSetBy = Automatic
+
+	column was_live
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1ed43789-d24c-4edd-a2a2-e136c0ab7412
+		summarizeBy: none
+		sourceColumn: was_live
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Kategori Durasi' = SWITCH(TRUE(), fact_videos[duration_sec] < 60, "< 1 menit", fact_videos[duration_sec] <= 600, "1-10 menit", "> 10 menit")
+		lineageTag: 87ef764a-f130-4004-8460-da0b761c10c7
+		summarizeBy: none
+		sortByColumn: 'Urutan Durasi'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Urutan Durasi' =
+			SWITCH(TRUE(), fact_videos[duration_sec] < 60, 1,
+			fact_videos[duration_sec] <= 600, 2,
+			3
+			)
+		isHidden
+		formatString: 0
+		lineageTag: 10508934-72bb-4434-9074-91a59a631033
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_videos = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_videos.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"video_id", type text}, {"channel_id", type text}, {"date", type date}, {"province", type text}, {"title", type text}, {"url", type text}, {"view_count", Int64.Type}, {"like_count", Int64.Type}, {"comment_count", Int64.Type}, {"duration_sec", Int64.Type}, {"was_live", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

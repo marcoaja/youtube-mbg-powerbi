@@ -1,0 +1,48 @@
+table dim_issue
+	lineageTag: 66abe7b5-fcba-4c88-9000-209fe374d357
+
+	column issue
+		dataType: string
+		lineageTag: a69b7e08-5557-4728-bb74-c1429aaca46f
+		summarizeBy: none
+		sourceColumn: issue
+
+		annotation SummarizationSetBy = Automatic
+
+	column issue_label
+		dataType: string
+		lineageTag: ec217ca2-2c4b-428a-925e-a8c61c33cdfa
+		summarizeBy: none
+		sourceColumn: issue_label
+		sortByColumn: issue_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column issue_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 774d8ba1-32ef-4eb7-b74b-5bffd7c36469
+		summarizeBy: none
+		sourceColumn: issue_order
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_issue = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_issue.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"issue", type text}, {"issue_label", type text}, {"issue_order", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

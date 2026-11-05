@@ -1,0 +1,72 @@
+table fact_video_issue
+	lineageTag: 1b3d40cd-0878-4ce0-a7e2-eb001b07a753
+
+	column video_id
+		dataType: string
+		lineageTag: 5a53f9d3-425b-473c-9dc0-286cb3322f3f
+		summarizeBy: none
+		sourceColumn: video_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column issue
+		dataType: string
+		isHidden
+		lineageTag: 201a1f00-fca3-4cb8-8b96-ce1713757c3c
+		summarizeBy: none
+		sourceColumn: issue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_id
+		dataType: string
+		isHidden
+		lineageTag: b982ed5a-edb7-44b9-96d8-0d3ecf6b7198
+		summarizeBy: none
+		sourceColumn: channel_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 83c5f3f1-8fcf-4035-b208-6cadb401948f
+		summarizeBy: none
+		sourceColumn: date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column province
+		dataType: string
+		isHidden
+		lineageTag: 08009244-a616-49a3-9186-307312b4bea9
+		summarizeBy: none
+		sourceColumn: province
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_video_issue = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_video_issue.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"video_id", type text}, {"issue", type text}, {"channel_id", type text}, {"date", type date}, {"province", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

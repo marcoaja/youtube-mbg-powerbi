@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "daef481392f3f6b8350f",
+  "position": {
+    "x": 16,
+    "y": 662,
+    "z": 14000,
+    "height": 42,
+    "width": 1248,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Privasi:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "9pt",
+                      "color": "#6b7280"
+                    }
+                  },
+                  {
+                    "value": "hanya data video publik dan angka agregat; teks komentar dan identitas penonton tidak digunakan.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#6b7280"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

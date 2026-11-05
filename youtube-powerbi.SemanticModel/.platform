@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "youtube-powerbi"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "15209034-6818-489b-86ac-4ce54f26742f"
+  }
+}

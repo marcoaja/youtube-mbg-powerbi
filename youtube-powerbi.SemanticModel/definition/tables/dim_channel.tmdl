@@ -1,0 +1,50 @@
+table dim_channel
+	lineageTag: f78d8424-2280-4aec-8d36-10c8e610a825
+
+	column channel_id
+		dataType: string
+		lineageTag: e809335b-3fe9-4318-891b-5593f72836db
+		summarizeBy: none
+		sourceColumn: channel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_name
+		dataType: string
+		lineageTag: 6b656e1e-1e40-4d04-a15c-6db242c11472
+		summarizeBy: none
+		sourceColumn: channel_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: f16cb13f-70c9-41fe-97cf-e806d05246ba
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column collection_method
+		dataType: string
+		lineageTag: 2df45633-27df-4daf-bd38-f2ad47d80f93
+		summarizeBy: none
+		sourceColumn: collection_method
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_channel = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_channel.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"channel_id", type text}, {"channel_name", type text}, {"category", type text}, {"collection_method", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

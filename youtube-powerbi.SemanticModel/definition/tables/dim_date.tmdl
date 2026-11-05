@@ -1,0 +1,94 @@
+table dim_date
+	lineageTag: f5d68d96-86c8-410e-9bac-3e735b18b54c
+	dataCategory: Time
+
+	column date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 96afe17d-3998-463f-bc86-e182c95fea7c
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 600efb29-8112-48d8-8a7e-ea67266a9843
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: string
+		lineageTag: 223ca033-2712-4b8e-85c7-102a1ef383a4
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		formatString: 0
+		lineageTag: fd541d73-3853-43e7-97ee-5ac359376397
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 6b7c8ece-58c0-440e-8ae8-1de8789a3242
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: 46e05103-1d29-4265-ba91-1b31577ca1dd
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column day_of_week_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 0cb6f973-c799-4f59-986a-f3bea5b013ba
+		summarizeBy: sum
+		sourceColumn: day_of_week_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_name
+		dataType: string
+		lineageTag: dd73bd0d-05de-41b1-8dc3-c2cf1b0b0ed4
+		summarizeBy: none
+		sourceColumn: day_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_date.csv"),[Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"year", Int64.Type}, {"quarter", type text}, {"month_number", Int64.Type}, {"month_name", type text}, {"year_month", type date}, {"day_of_week_number", Int64.Type}, {"day_name", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

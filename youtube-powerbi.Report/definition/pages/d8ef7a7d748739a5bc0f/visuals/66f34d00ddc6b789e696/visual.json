@@ -1,0 +1,177 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "66f34d00ddc6b789e696",
+  "position": {
+    "x": 16,
+    "y": 250,
+    "z": 11000,
+    "height": 400,
+    "width": 408,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Model data (star schema)",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Fact",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt",
+                      "color": "#1d4e89"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• fact_videos",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " 17.663 baris · 1 baris = 1 video",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• fact_video_issue",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " 5.882 baris · 1 baris = 1 video × 1 isu",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Dimension",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt",
+                      "color": "#1d4e89"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• dim_channel",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " 28 channel (media nasional & pemerintah)",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• dim_date",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " 633 hari, ditandai sebagai date table",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• dim_province",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " 38 provinsi + 2 label khusus",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• dim_issue",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " 7 kategori isu keamanan pangan",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

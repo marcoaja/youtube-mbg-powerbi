@@ -1,0 +1,191 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "2678ed41d01ef227f14c",
+  "position": {
+    "x": 436,
+    "y": 250,
+    "z": 12000,
+    "height": 400,
+    "width": 408,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Definisi metrik",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Total Videos",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " jumlah video",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Total Views",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " jumlah penayangan",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Avg Views per Video",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " Total Views ÷ Total Videos",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Engagement Rate",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " (likes + comments) ÷ views, dihitung dari total, bukan rata-rata per video",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Share of Views %",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " views satu channel ÷ views semua channel",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Videos MoM %",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " perubahan jumlah video dibanding bulan sebelumnya",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Video Isu",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " jumlah video unik yang membahas minimal 1 isu keamanan pangan",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• % Video Isu",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10pt"
+                    }
+                  },
+                  {
+                    "value": " Video Isu ÷ Total Videos",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#6b7280"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

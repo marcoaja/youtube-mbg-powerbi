@@ -1,0 +1,7 @@
+expression DataFolder = "Z:\Projects\PowerBI\youtube-mbg-powerbi\data\star\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 7dd62395-661e-47cc-996f-9789d30c5f65
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "1434f1295e46f73acb16",
+  "position": {
+    "x": 16,
+    "y": 16,
+    "z": 0,
+    "height": 80,
+    "width": 600,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Isu Keamanan Pangan",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Isu apa yang diberitakan, kapan memuncak, oleh siapa, dan di mana",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#6B7280"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
